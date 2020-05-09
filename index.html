@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Amazon Transcribe WebSocket API - Sample Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="apigClient.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+        <div class="col">
+            <h1 class="text-center mt-5">Smart Photo Album</h1>
+        </div>
+        <div id="error" class="isa_error"></div>
+        <!-- <input id="transcript" placeholder="Press Start and speak into your mic" rows="5"
+            readonly="readonly"></input> -->
+            
+           
+              <div class="row">
+                <div class="col-md-8 offset-md-2">
+                  <div class="input-group">
+                    <input id="transcript" type="text" class="form-control" placeholder="Press Start and speak into your mic" id="txtSearch"/>
+                    <div class="input-group-btn">
+                      <button class="btn btn-primary" type="submit" onclick="searchPhoto()">
+                        <span class="glyphicon glyphicon-search">Search</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+        <div class="row">
+            <div class="col text-center">
+                <button id="start-button" class="button-lg" title="Start Transcription">
+                    <i class="fa fa-microphone"></i> Start
+                </button>
+                <button id="stop-button" class="button-lg" title="Stop Transcription" disabled="true"><i
+                        class="fa fa-stop-circle"></i> Stop
+                </button>
+                <button id="reset-button" class="button-lg button-secondary" title="Clear Transcript"> 
+                    Clear Transcript
+                </button>
+            </div>
+        </div>
+        <h3 class="text-center mt-4">OR</h3>
+        <h3 class="text-center">Upload a new photo</h3>
+        <div class="col-md-8 offset-md-2 mt-5 mb-5">
+            <label for="file_path">Upload file</label>
+            <input type="file" class="form-control-file" id="file_path">
+            <button class="btn btn-info mt-2" type="submit" onclick="uploadPhoto()">Search</button>
+        </div>
+
+        <div>
+            <div class="banner-section" id="img-container">
+                <p id="displaytext"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="render.js"></script>
+    <script src="dist/main.js"></script>
+</body>
+
+</html>
